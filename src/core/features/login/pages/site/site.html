@@ -1,5 +1,5 @@
 <ion-header>
-    <ion-toolbar>
+    <!-- <ion-toolbar>
         <ion-buttons slot="start">
             <ion-back-button [text]="'core.back' | translate" />
         </ion-buttons>
@@ -13,21 +13,30 @@
                 <ion-icon slot="icon-only" name="fas-gear" aria-hidden="true" />
             </ion-button>
         </ion-buttons>
-    </ion-toolbar>
+    </ion-toolbar> -->
 </ion-header>
 <ion-content class="ion-padding">
     <div class="list-item-limited-width">
         <div class="ion-text-center ion-padding ion-margin-bottom core-login-site-logo" [class.hidden]="hasSites || enteredSiteUrl">
-            <img src="assets/img/login_logo.png" class="avatar-full login-logo" role="presentation"
-                [alt]="'core.login.logoof' | translate: { $a: appName }">
+            <img src="assets/img/lms_alazhar_logo.png" height="150px">
         </div>
         <form [formGroup]="siteForm" (ngSubmit)="connect(siteForm.value.siteUrl, $event)" *ngIf="!fixedSites && siteForm" #siteFormEl>
             <!-- Form to input the site URL if there are no fixed sites. -->
-            <ng-container *ngIf="siteSelector==='url'">
+            <!-- <ng-container *ngIf="siteSelector==='url'">
                 <ion-item lines="inset">
                     <ion-input name="url" type="url" placeholder="{{ 'core.login.siteaddressplaceholder' | translate }}"
                         formControlName="siteUrl" [core-auto-focus]="showKeyboard && !showScanQR" labelPlacement="stacked"
                         [label]="'core.login.siteaddress' | translate" [clearInput]="true" />
+                </ion-item>
+            </ng-container> -->
+            <ng-container *ngIf=" siteSelector=='url'">
+                <ion-item>
+                    <ion-label position=" stacked">
+                        <!-- <h2>{{ 'core.login.siteaddress' | translate }}</h2> -->
+                        <h2>Pilih Tingkat LMS</h2>
+                    </ion-label>
+                    <ion-input name="url" type="url" placeholder="{{ 'core.login.siteaddressplaceholder' | translate }}" formControlName="siteUrl" [core-auto-focus]="showKeyboard && !showScanQR">
+                    </ion-input>
                 </ion-item>
             </ng-container>
             <ng-container *ngIf="siteSelector !== 'url'">
@@ -37,7 +46,50 @@
                         labelPlacement="stacked" [label]="'core.login.siteaddress' | translate" [clearInput]="true" />
                 </ion-item> -->
 
+                <div class="ion-text-center ion-text-wrap">
+                    Selamat datang di
+                    <h2>Learning Management System</h2>
+                </div>
+                <br><br>
+                <div class="ion-text-center ion-text-wrap">
+                    Silahkan Pilih Jenjang Belajar
+                </div>
+                <br>
+
+
                 <ion-list class="core-login-site-list">
+                    <ion-item button class="core-login-site-list-title" (click)="connect('https://sd.salam-alazhar.id', $event)">
+                        <div class="ion-text-center ion-text-wrap" style="background-color:#e9f2e4;width:100%;padding: 25px 25px 25px 25px;">
+                            <img src="assets/img/lms_sd_icon.png">
+                            <br>
+                            <ion-label>
+                                <h2>LMS Sekolah Dasar</h2>
+                            </ion-label>
+                        </div>
+                    </ion-item>
+                    <br>
+                    <ion-item button class="core-login-site-list-title" (click)="connect('https://smp.salam-alazhar.id', $event)">
+                        <div class="ion-text-center ion-text-wrap" style="background-color:#fdf6dd;width:100%;padding: 25px 25px 25px 25px;">
+                            <img src="assets/img/lms_smp_icon.png">
+                            <br>
+                            <ion-label>
+                                <h2>LMS Sekolah Menengah Pertama</h2>
+                            </ion-label>
+                        </div>
+                    </ion-item>
+                    <br>
+                    <ion-item button class="core-login-site-list-title" (click)="connect('https://sma.salam-alazhar.id', $event)">
+                        <div class="ion-text-center ion-text-wrap" style="background-color:#d9ecf6;width:100%;padding: 25px 25px 25px 25px;">
+                            <img src="assets/img/lms_sma_icon.png">
+                            <br>
+                            <ion-label>
+                                <h2>LMS Sekolah Menengah Atas</h2>
+                            </ion-label>
+                        </div>
+                    </ion-item>
+
+                </ion-list>
+                <!-- <ion-list class="core-login-site-list">
                     <ion-item class="core-login-site-list-title">
                         <ion-label>
                             <h2 class="item-heading">{{ 'core.login.selectsite' | translate }}</h2>
@@ -82,7 +134,7 @@
                             <ng-container *ngTemplateOutlet="sitelisting; context: {site: site}" />
                         </ng-container>
                     </div>
-                </ion-list>
+                </ion-list> -->
 
                 <div *ngIf="!hasSites && loadingSites" class="core-login-site-nolist-loading">
                     <ion-spinner [attr.aria-label]="'core.loading' | translate" />
@@ -114,7 +166,7 @@
             </ion-list>
         </ng-container>
 
-        <ng-container *ngIf="showScanQR && !hasSites && !enteredSiteUrl">
+        <!-- <ng-container *ngIf="showScanQR && !hasSites && !enteredSiteUrl">
             <div class="ion-text-center ion-padding ion-margin-top core-login-site-qrcode-separator">{{ 'core.login.or' | translate }}
             </div>
             <ion-button expand="block" fill="outline" class="ion-margin core-login-site-qrcode" (click)="showInstructionsAndScanQR()"
@@ -122,7 +174,7 @@
                 <ion-icon slot="start" name="fas-qrcode" aria-hidden="true" />
                 {{ 'core.scanqr' | translate }}
             </ion-button>
-        </ng-container>
+        </ng-container> -->
 
         <!-- Help. -->
         <!-- <ion-button class="ion-margin-top core-login-need-help core-button-as-link ion-text-wrap" (click)="showHelp()"

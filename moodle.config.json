@@ -95,7 +95,7 @@
     "privacypolicy": "https://moodle.net/moodle-app-privacy/",
     "notificoncolor": "#0282c6",
     "enableanalytics": false,
-    "enableonboarding": true,
+    "enableonboarding": false,
     "forceColorScheme": "",
     "forceLoginLogo": false,
     "showTopLogo": "hidden",

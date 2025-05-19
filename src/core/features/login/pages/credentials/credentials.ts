@@ -173,6 +173,20 @@ export default class CoreLoginCredentialsPage implements OnInit, OnDestroy {
         );
     }
 
+    getSiteName(): string {
+        const url = this.site.siteUrl || '';
+
+        if (url.includes('sd.')) {
+            return 'LMS Sekolah Dasar';
+        } else if (url.includes('smp.')) {
+            return 'LMS Sekolah Menengah Pertama';
+        } else if (url.includes('sma.')) {
+            return 'LMS Sekolah Menengah Atas';
+        } else {
+            return 'LMS'; // fallback default
+        }
+    }
+
     /**
      * Get site config and check if it requires SSO login.
      * This should be used only if a fixed URL is set, otherwise this check is already performed in CoreLoginSitePage.
