@@ -31,26 +31,46 @@
                 </ion-item>
             </ng-container>
             <ng-container *ngIf="siteSelector !== 'url'">
-                <ion-item lines="inset">
+                <!-- <ion-item lines="inset">
                     <ion-input name="url" placeholder="{{ 'core.login.siteaddressplaceholder' | translate }}" formControlName="siteUrl"
                         [core-auto-focus]="showKeyboard && !showScanQR" (ionInput)="searchSite($event, siteForm.value.siteUrl)"
                         labelPlacement="stacked" [label]="'core.login.siteaddress' | translate" [clearInput]="true" />
-                </ion-item>
+                </ion-item> -->
 
-                <ion-list [class.hidden]="!hasSites && !enteredSiteUrl" class="core-login-site-list">
+                <ion-list class="core-login-site-list">
                     <ion-item class="core-login-site-list-title">
                         <ion-label>
                             <h2 class="item-heading">{{ 'core.login.selectsite' | translate }}</h2>
                         </ion-label>
                     </ion-item>
-                    <ion-item button *ngIf="enteredSiteUrl" (click)="connect(enteredSiteUrl.url, $event)"
+                    <ion-item (click)="connect('https://sd.salam-alazhar.id', $event)"
                         [attr.aria-label]="'core.login.connect' | translate" [detail]="true" class="core-login-entered-site">
                         <ion-thumbnail slot="start" aria-hidden="true">
-                            <ion-icon name="fas-pen" aria-hidden="true" />
+                            <ion-icon name="fas-school" style="color: green" aria-hidden="true" />
                         </ion-thumbnail>
                         <ion-label>
-                            <h2 class="ion-text-wrap">{{ 'core.login.yourenteredsite' | translate }}</h2>
-                            <p>{{enteredSiteUrl.noProtocolUrl}}</p>
+                            <h2 class="ion-text-wrap" style="color: green">LMS Sekolah Dasar</h2>
+                            <p>https://sd.salam-alazhar.id</p>
+                        </ion-label>
+                    </ion-item>
+                    <ion-item (click)="connect('https://smp.salam-alazhar.id', $event)"
+                        [attr.aria-label]="'core.login.connect' | translate" [detail]="true" class="core-login-entered-site">
+                        <ion-thumbnail slot="start" aria-hidden="true">
+                            <ion-icon name="fas-school" style="color: orange" aria-hidden="true" />
+                        </ion-thumbnail>
+                        <ion-label>
+                            <h2 class="ion-text-wrap" style="color: orange">LMS Sekolah Menengah Pertama</h2>
+                            <p>https://smp.salam-alazhar.id</p>
+                        </ion-label>
+                    </ion-item>
+                    <ion-item (click)="connect('https://sma.salam-alazhar.id', $event)"
+                        [attr.aria-label]="'core.login.connect' | translate" [detail]="true" class="core-login-entered-site">
+                        <ion-thumbnail slot="start" aria-hidden="true">
+                            <ion-icon name="fas-school" style="color: blue" aria-hidden="true" />
+                        </ion-thumbnail>
+                        <ion-label>
+                            <h2 class="ion-text-wrap" style="color: blue">LMS Sekolah Menengah Atas</h2>
+                            <p>https://sma.salam-alazhar.id</p>
                         </ion-label>
                     </ion-item>
 
@@ -105,10 +125,10 @@
         </ng-container>
 
         <!-- Help. -->
-        <ion-button class="ion-margin-top core-login-need-help core-button-as-link ion-text-wrap" (click)="showHelp()"
+        <!-- <ion-button class="ion-margin-top core-login-need-help core-button-as-link ion-text-wrap" (click)="showHelp()"
             aria-haspopup="dialog" expand="block" fill="clear">
             {{ 'core.needhelp' | translate }}
-        </ion-button>
+        </ion-button> -->
     </div>
 </ion-content>
 
